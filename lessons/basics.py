@@ -1,4 +1,3 @@
 print(2)
 print("HELLO")
-print("HELLO"[0])
-
+print("HELLO"[0]) 
