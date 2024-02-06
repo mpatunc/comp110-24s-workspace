@@ -14,12 +14,12 @@ guess_box: str = "\U0001F7E6"
 player_guess_row: int = int(input("Guess a row: "))
 
 while player_guess_row > grid_size or player_guess_row <= 0:
-    player_guess_row = int(input("The grid is only 4 by 4. Try again: "))
+    player_guess_row = int(input(f"The grid is only {grid_size} by {grid_size}. Try again: "))
 
 player_guess_column: int = int(input("Guess a column: "))
 
 while player_guess_column > grid_size or player_guess_column <= 0:
-    player_guess_column = int(input("The grid is only 4 by 4. Try again: "))
+    player_guess_column = int(input(f"The grid is only {grid_size} by {grid_size}. Try again: "))
 
 # If correct change guess box to red, if not change to white 
 if secret_row == player_guess_row and secret_column == player_guess_column:
