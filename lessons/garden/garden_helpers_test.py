@@ -22,7 +22,8 @@ def test_add_by_kind_empty():
     new_plant_kind: str = ""
     new_plant: str = ""
     test: dict[str, list[str]] = {}
-    assert add_by_kind(test, new_plant_kind, new_plant) == test[new_plant_kind].append(new_plant)
+    add_by_kind(test, new_plant_kind, new_plant)
+    assert test == {"": [""]}
 
 
 # edge case for add by date
@@ -31,7 +32,8 @@ def test_add_by_date_format() -> None:
     month: str = "March"
     plant: str = "apple"
     test: dict[str, list[str]] = {}
-    assert add_by_date(test, month, plant) == test[month].append(plant)
+    add_by_date(test, month, plant)
+    assert test == {"March": ["apple"]}
 
 
 # use case for add by date
@@ -40,7 +42,8 @@ def test_add_by_date_empty() -> None:
     month: str = ""
     plant: str = ""
     test: dict[str, list[str]] = {}
-    assert add_by_date(test, month, plant) == test[month].append(plant)
+    add_by_date(test, month, plant)
+    assert test == {"": [""]}
 
 
 # use case for lookup_by_kind_and_date
