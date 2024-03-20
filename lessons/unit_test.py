@@ -17,7 +17,7 @@ def test_sum_empty() -> None:
     assert sum([]) == 0 
 
 # to actually test go into 
-# terminal and type python -m pytest [where your function is]
+# terminal and type python -m pytest [where your function is
 # for example python -m pytest lessons/unit_test.py for this function
     
 def test_sum_one_elements() -> None:
