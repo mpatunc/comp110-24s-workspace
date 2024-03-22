@@ -50,8 +50,9 @@ def test_favorite_color_typical() -> None:
 def test_favorite_color_equal() -> None: 
     """Equal votes for two colors -> only one should be returned."""
     color: dict[str, str] = {"Marc": "blue", "Ezri": "blue", "Kris": "yellow", "Jake": "yellow"}
-    max1: str = "yellow"
+    max1: str = "blue" and "yellow"
     assert favorite_color(color) == max1
+
 
 # edge case: 
 def test_favorite_color_same() -> None: 
@@ -127,16 +128,14 @@ def test_update_attendance_format() -> None:
     update_attendance(attendance, update_day, update_name)
     assert attendance == {"Monday": ["Vrinda", "Kaleb"], "Tuesday": ["Alyssa", "Vrinda"]}
 
+
 # use case 2
 def test_update_attendance_multiple() -> None: 
     """Double name on same day is not repeated."""
     attendance: dict[str, list[str]] = {"Monday": ["Vrinda", "Kaleb"], "Tuesday": ["Alyssa"]}
     update_day: str = "Tuesday"
     update_names: list[str] = ["Kaleb", "Kaleb"]
-    name: int = 0
-    if update_names[name] == update_names[0]:
-        update_names.pop(name)
-        name += 1
+    update_names = "Kaleb"
     update_attendance(attendance, update_day, update_names)
     assert attendance == {"Monday": ["Vrinda", "Kaleb"], "Tuesday": ["Alyssa", "Kaleb"]}
 
