@@ -1,17 +1,39 @@
 import numpy as np
 import timeit
 import tracemalloc
+from random import randint
+
+
+#from exercises.ex07.sort_functions import selection_sort, insertion_sort
+
+
 
 MAX_VAL: int = 10 ** 5
 
+
 def random_descending_list(n: int) -> list[int]:
     """Generate a list of random descending integers."""
-    new_list: list[int] = []
+    new_list: list[int] = [MAX_VAL]
+    for _ in range(n - 1):
+        new_list.append(randint(min(new_list) - MAX_VAL, new_list[-1] -1))
     return new_list
+
+# new_list: list[int] = []
+    # first_num = randint(-100000, MAX_VAL)
+    # new_list.append(first_num)
+    # idx: int = 0
+    # # n - 1 because list has to include max number was well
+    # while idx < n - 1: 
+    #     random_num = randint(-100000, MAX_VAL)
+    #     if random_num <= new_list[idx]:
+    #         new_list.append(random_num)
+    #         idx += 1
+    # return new_list
+
 
 def evaluate_runtime(fn_name, start_size: int, end_size: int) -> np.array:
     """Evaluate the runtime for different size inputs."""
-    from exercises.ex07.sort_functions import selection_sort, insertion_sort
+    from sort_functions import selection_sort, insertion_sort
     NUM_TRIALS: int = 1
     times: list[float] = []
     for inp_size in range(start_size, end_size+1):
@@ -23,8 +45,10 @@ def evaluate_runtime(fn_name, start_size: int, end_size: int) -> np.array:
     print(f"Runtime of {fn_name} for input of size {end_size}: {round(result/NUM_TRIALS, 2)} seconds")
     return np.array(times)
 
+
 def evaluate_memory_usage(fn_name, start_size: int, end_size: int):
-    from exercises.ex07.sort_functions import selection_sort, insertion_sort
+    """Docstring."""
+    from sort_functions import selection_sort, insertion_sort
     usage: list[float] = []
     for inp_size in range(start_size, end_size+1):
         l: list[int] = random_descending_list(inp_size)
